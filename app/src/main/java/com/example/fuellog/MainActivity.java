@@ -80,6 +80,26 @@ public class MainActivity extends AppCompatActivity {
                 });
 
         helper.attachToRecyclerView(recyclerView);
+
+        adapter.setOnItemClickListener(new LogListAdapter.ClickListener(){
+            @Override
+            public void onItemClick(View v, int position){
+            Log log =adapter.getLogAtPosition(position);
+            launchNewLogActivity(log);
+            }
+        });
+    }
+
+    private void launchNewLogActivity(Log log) {
+        Intent intent = new Intent(this, NewLogActivity.class);
+        Bundle extras = new Bundle();
+
+        extras.putInt("id", log.getId());
+        extras.putString("distance", log.getLog());
+        extras.putString("fuelAmount", log.getLog3());
+        extras.putString("fuelPrice", log.getLog2());
+        intent.putExtras(extras);
+        startActivityForResult(intent, 2);
     }
 
     @Override
