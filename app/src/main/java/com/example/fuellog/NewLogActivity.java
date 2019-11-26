@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 
@@ -30,12 +31,14 @@ public class NewLogActivity extends AppCompatActivity {
         mEditLogView2 = findViewById(R.id.edit_log_price);
 
 
-//        final Button button = findViewById(R.id.button_save);
-//        button.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View view) {
-//
-//            }
-//        });
+
+
+        final Button button = findViewById(R.id.button_save);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+            }
+        });
     }
 
     public void saveData(View view) {
