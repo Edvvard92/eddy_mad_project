@@ -9,7 +9,8 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "log_table")
 public class Log {
 
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "id")
     private int id;
 
     @NonNull

@@ -26,6 +26,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     public static final int EXTRA_REPLY = 2;
+    private LogViewModel mLogViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         final LogListAdapter adapter = new LogListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         mLogViewModel = ViewModelProviders.of(this).get(LogViewModel.class);
         mLogViewModel.getAllLogs().observe(this, new Observer<List<Log>>() {
             @Override
@@ -53,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setLogs(logs);
             }
         });
+
         ItemTouchHelper helper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0,
                         ItemTouchHelper.LEFT | ItemTouchHelper.RIGHT) {
@@ -102,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
 
     }
-    private LogViewModel mLogViewModel;
+//    private LogViewModel mLogViewModel;
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         android.util.Log.d(TAG, "onActivityResult: requestCode: " + requestCode + " resultCode: " + resultCode);

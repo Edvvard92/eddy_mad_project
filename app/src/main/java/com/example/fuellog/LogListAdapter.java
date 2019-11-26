@@ -28,7 +28,12 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
     public void onBindViewHolder(LogViewHolder holder, int position) {
         if (mLogs != null) {
             Log current = mLogs.get(position);
+
             holder.logItemView.setText(current.getLog());
+            holder.log2.setText(current.getLog2());
+            holder.log3.setText(current.getLog3());
+
+
         } else {
             // Covers the case of data not being ready yet.
             holder.logItemView.setText("No Log");
@@ -52,10 +57,14 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
 
     class LogViewHolder extends RecyclerView.ViewHolder {
         private final TextView logItemView;
+        private final TextView log2;
+        private final TextView log3;
 
         private LogViewHolder(View itemView) {
             super(itemView);
             logItemView = itemView.findViewById(R.id.textView);
+            log2 = itemView.findViewById(R.id.textView2);
+            log3 = itemView.findViewById(R.id.textView3);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
